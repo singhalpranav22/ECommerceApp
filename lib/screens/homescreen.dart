@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutterecom/components/horizontal_list.dart';
+import 'package:flutterecom/components/products.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -130,10 +131,29 @@ class _HomePageState extends State<HomePage> {
               "  Categories",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 18.0,
               ),
             ),
           ),
           HorizontalList(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+          ),
+          Center(
+            child: Text(
+              "  Recent Items",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(4.0),
+          ),
+          Container(
+      height: 250.0,
+              child: Products()),
 
         ],
       ),
