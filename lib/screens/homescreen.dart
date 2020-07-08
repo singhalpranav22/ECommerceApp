@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
 
       appBar: AppBar(
+        elevation: 0.2,
         backgroundColor: Colors.red,
         title: Text(
 

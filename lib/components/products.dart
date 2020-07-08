@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 
+
+import 'package:flutter/material.dart';
+import 'package:flutterecom/screens/productdetails.dart';
 class Products extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
@@ -10,37 +12,37 @@ class _ProductsState extends State<Products> {
   var prod_list=[
     {
       "name": "Allen Solly",
-      "picture": "assets/images/Recent/allen.jpg",
+      "picture": "assets/images/allen.jpg",
       "oldprice":"1499",
       "newprice":"799",
     },
     {
       "name": "Heels",
-      "picture": "assets/images/Recent/heels.jpg",
+      "picture": "assets/images/heels.jpg",
       "oldprice":"2599",
       "newprice":"1599",
     },
     {
       "name": "Jeans",
-      "picture": "assets/images/Recent/jeans.jpg",
+      "picture": "assets/images/jeans.jpg",
       "oldprice":"1999",
       "newprice":"999",
     },
     {
       "name": "Watch",
-      "picture": "assets/images/Recent/watch.jpg",
-      "oldprice":"4599",
-      "newprice":"3999",
+      "picture": "assets/images/watch.jpg",
+      "oldprice":"1999",
+      "newprice":"999",
     },
     {
       "name": "Shirt",
-      "picture": "assets/images/Recent/white.jpg",
+      "picture": "assets/images/white.jpg",
       "oldprice": "1499",
       "newprice": "799",
     },
     {
       "name": "Sandal",
-      "picture": "assets/images/Recent/sandals.jpg",
+      "picture": "assets/images/sandals.jpg",
       "oldprice":"2999",
       "newprice":"2499",
     }
@@ -70,28 +72,51 @@ class SingleProd extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-        tag: 'prod_name',
+        tag: name,
         child: Material(
           child: InkWell(
-            onTap: null,
+            onTap:(){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Productdetails(
+                prodname: name,
+                prodimage: imageloc,
+                prodoldprice: oldprice,
+                prodnewprice: newprice,
+
+
+              )));
+            },
             child: GridTile(
               footer: Container(
-                color: Colors.white30,
+                color: Colors.white70,
                 child: ListTile(
-                  title: Text(name,style: TextStyle(
+                  leading: Text(name,style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),),
-                  
+                  title: Text("₹ $newprice",style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+
+                  ),),
+                  subtitle: Text("₹ $oldprice",style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.lineThrough,
+                ),),
+                  ),),
+
+
+              child: Image.asset(imageloc,
+                fit: BoxFit.cover,),
 
                 ),
                 
               ),
-              child: Image.asset(imageloc,
-              fit: BoxFit.cover,),
+
             ),
           ),
-        ),
-      ),
-    );
+        );
+
+
   }
 }
